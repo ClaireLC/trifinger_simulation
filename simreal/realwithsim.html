@@ -15,6 +15,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -94,18 +95,18 @@
            <div itemprop="articleBody">
              
   <section id="simulation-vs-real-robot-in-the-real-robot-api">
-<h1>Simulation vs Real Robot in the Real Robot API<a class="headerlink" href="#simulation-vs-real-robot-in-the-real-robot-api" title="Permalink to this headline"></a></h1>
+<h1>Simulation vs Real Robot in the Real Robot API<a class="headerlink" href="#simulation-vs-real-robot-in-the-real-robot-api" title="Permalink to this heading"></a></h1>
 <p>It is also possible to use this simulation through our software for interfacing with the
 real robot. So, you could
 access the real TriFinger with the simulation as seen in <a class="reference internal" href="simwithreal.html"><span class="doc">Simulation vs Real Robot in trifinger_simulation</span></a>.
 You can also access the simulated TriFinger through the real interface, as seen here below.</p>
 <section id="the-real-robot-api">
-<h2>The Real Robot API<a class="headerlink" href="#the-real-robot-api" title="Permalink to this headline"></a></h2>
+<h2>The Real Robot API<a class="headerlink" href="#the-real-robot-api" title="Permalink to this heading"></a></h2>
 <p>The <a class="reference external" href="https://github.com/open-dynamic-robot-initiative/robot_interfaces">robot_interfaces</a> sotware package provides an interface to the hardware
 of the real TriFinger robots.  See the documentation there fore more details.</p>
 </section>
 <section id="using-the-simulation-through-the-robot-interfaces-api">
-<span id="robot-interfaces-with-simulation"></span><h2>Using the Simulation through the <a class="reference external" href="https://github.com/open-dynamic-robot-initiative/robot_interfaces">robot_interfaces</a> API<a class="headerlink" href="#using-the-simulation-through-the-robot-interfaces-api" title="Permalink to this headline"></a></h2>
+<span id="robot-interfaces-with-simulation"></span><h2>Using the Simulation through the <a class="reference external" href="https://github.com/open-dynamic-robot-initiative/robot_interfaces">robot_interfaces</a> API<a class="headerlink" href="#using-the-simulation-through-the-robot-interfaces-api" title="Permalink to this heading"></a></h2>
 <p>It is possible to create a backend of this simulation and have access to all the methods
 provided by <a class="reference external" href="https://github.com/open-dynamic-robot-initiative/robot_interfaces">robot_interfaces</a> in addition to all the methods provided by <code class="docutils literal notranslate"><span class="pre">SimFinger</span></code>.
 This is done by using the pyBullet

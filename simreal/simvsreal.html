@@ -15,6 +15,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -96,7 +97,7 @@
            <div itemprop="articleBody">
              
   <section id="differences-between-simulation-and-real-robot">
-<span id="sec-simulation-vs-real-robot"></span><h1>Differences between Simulation and Real Robot<a class="headerlink" href="#differences-between-simulation-and-real-robot" title="Permalink to this headline"></a></h1>
+<span id="sec-simulation-vs-real-robot"></span><h1>Differences between Simulation and Real Robot<a class="headerlink" href="#differences-between-simulation-and-real-robot" title="Permalink to this heading"></a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">SimFinger</span></code> class provides us with an API to control the TriFinger robots in
 simulation. Similarly, the <a class="reference external" href="https://github.com/open-dynamic-robot-initiative/robot_interfaces/blob/master/include/robot_interfaces/robot_frontend.hpp">robot_interfaces::RobotFrontend</a> class provides an
 API to interact with these robots in real life.</p>
@@ -104,7 +105,7 @@ API to interact with these robots in real life.</p>
 differences one should keep in mind, which arise due to the accompanying switch
 between non-real time behaviour (in simulation), and real-time behaviour (in real life).</p>
 <section id="simulation-is-stepped-in-append-desired-action">
-<h2>Simulation is stepped in <code class="docutils literal notranslate"><span class="pre">append_desired_action()</span></code><a class="headerlink" href="#simulation-is-stepped-in-append-desired-action" title="Permalink to this headline"></a></h2>
+<h2>Simulation is stepped in <code class="docutils literal notranslate"><span class="pre">append_desired_action()</span></code><a class="headerlink" href="#simulation-is-stepped-in-append-desired-action" title="Permalink to this heading"></a></h2>
 <p>The simulation is explicitly stepped in the <code class="docutils literal notranslate"><span class="pre">append_desired_action()</span></code>
 method: this is because the simulation doesn’t exhibit real-time
 behaviour. So, every time the <code class="docutils literal notranslate"><span class="pre">append_desired_action()</span></code> is called,
@@ -114,7 +115,7 @@ method is not called. This is different than on the real robot, which will physi
 continue to move and will repeat the last action if no new action is provided in time.</p>
 </section>
 <section id="no-waiting-for-future-time-steps">
-<span id="id1"></span><h2>No waiting for future time steps<a class="headerlink" href="#no-waiting-for-future-time-steps" title="Permalink to this headline"></a></h2>
+<span id="id1"></span><h2>No waiting for future time steps<a class="headerlink" href="#no-waiting-for-future-time-steps" title="Permalink to this heading"></a></h2>
 <p>On the real robot, it is possible to pass a time index that lies in the future
 and most methods of the <a class="reference external" href="https://github.com/open-dynamic-robot-initiative/robot_interfaces/blob/master/include/robot_interfaces/robot_frontend.hpp">robot_interfaces::RobotFrontend</a> will simply block and wait until this
 time step is reached.  The simulation, however, is not running asynchronously
@@ -123,7 +124,7 @@ Therefore the behaviour of waiting for a time step is not supported.  Instead,
 passing a time index that lies in the future will result in an error.</p>
 </section>
 <section id="no-time-series-in-simfinger">
-<h2>No Time Series in SimFinger<a class="headerlink" href="#no-time-series-in-simfinger" title="Permalink to this headline"></a></h2>
+<h2>No Time Series in SimFinger<a class="headerlink" href="#no-time-series-in-simfinger" title="Permalink to this heading"></a></h2>
 <p>The <a class="reference external" href="https://github.com/open-dynamic-robot-initiative/robot_interfaces/blob/master/include/robot_interfaces/">robot_interfaces</a> package makes use of time series for observations,
 actions, etc.  This means all data of the last few time steps is available.  One
 could, for example do the following to determine how the state of the robot
@@ -137,7 +138,7 @@ the observation of the current time step <code class="docutils literal notransla
 <code class="docutils literal notranslate"><span class="pre">t</span></code> will result in an error.</p>
 </section>
 <section id="api-differences-with-robot-interfaces-robotfrontend">
-<h2>API-differences with <a class="reference external" href="https://github.com/open-dynamic-robot-initiative/robot_interfaces/blob/master/include/robot_interfaces/robot_frontend.hpp">robot_interfaces::RobotFrontend</a><a class="headerlink" href="#api-differences-with-robot-interfaces-robotfrontend" title="Permalink to this headline"></a></h2>
+<h2>API-differences with <a class="reference external" href="https://github.com/open-dynamic-robot-initiative/robot_interfaces/blob/master/include/robot_interfaces/robot_frontend.hpp">robot_interfaces::RobotFrontend</a><a class="headerlink" href="#api-differences-with-robot-interfaces-robotfrontend" title="Permalink to this heading"></a></h2>
 <p>Our goal is to provide the same API in <code class="docutils literal notranslate"><span class="pre">SimFinger</span></code> as in <code class="docutils literal notranslate"><span class="pre">RobotFrontend</span></code> to
 make transition between simulation and real robot easy.  There are a few
 differences, though.</p>

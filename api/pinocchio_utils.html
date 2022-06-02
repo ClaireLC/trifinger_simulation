@@ -15,6 +15,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -90,7 +91,7 @@
            <div itemprop="articleBody">
              
   <section id="module-trifinger_simulation.pinocchio_utils">
-<span id="module-pinocchio-utils"></span><h1>Module pinocchio_utils<a class="headerlink" href="#module-trifinger_simulation.pinocchio_utils" title="Permalink to this headline"></a></h1>
+<span id="module-pinocchio-utils"></span><h1>Module pinocchio_utils<a class="headerlink" href="#module-trifinger_simulation.pinocchio_utils" title="Permalink to this heading"></a></h1>
 <p>Wrappers around Pinocchio for easy forward and inverse kinematics.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="trifinger_simulation.pinocchio_utils.Kinematics">
@@ -119,7 +120,7 @@ arbitrarily many independent fingers.</p>
 np.array with x,y,z positions.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><em>List</em>[numpy.ndarray]</p>
+<dd class="field-odd"><p><em>List</em>[<em>ndarray</em>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -131,9 +132,9 @@ np.array with x,y,z positions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tip_target_positions</strong> (<em>Iterable</em><em>[</em><em>numpy.ndarray</em><em>]</em>) – List of finger tip target positions, one for
+<li><p><strong>tip_target_positions</strong> (<em>Iterable</em><em>[</em><em>ndarray</em><em>]</em>) – List of finger tip target positions, one for
 each finger.</p></li>
-<li><p><strong>joint_angles_guess</strong> (<em>numpy.ndarray</em>) – See <a class="reference internal" href="#trifinger_simulation.pinocchio_utils.Kinematics.inverse_kinematics_one_finger" title="trifinger_simulation.pinocchio_utils.Kinematics.inverse_kinematics_one_finger"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inverse_kinematics_one_finger()</span></code></a>.</p></li>
+<li><p><strong>joint_angles_guess</strong> (<em>ndarray</em>) – See <a class="reference internal" href="#trifinger_simulation.pinocchio_utils.Kinematics.inverse_kinematics_one_finger" title="trifinger_simulation.pinocchio_utils.Kinematics.inverse_kinematics_one_finger"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inverse_kinematics_one_finger()</span></code></a>.</p></li>
 <li><p><strong>tolerance</strong> (<em>float</em>) – See <a class="reference internal" href="#trifinger_simulation.pinocchio_utils.Kinematics.inverse_kinematics_one_finger" title="trifinger_simulation.pinocchio_utils.Kinematics.inverse_kinematics_one_finger"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inverse_kinematics_one_finger()</span></code></a>.</p></li>
 <li><p><strong>max_iterations</strong> (<em>int</em>) – See <a class="reference internal" href="#trifinger_simulation.pinocchio_utils.Kinematics.inverse_kinematics_one_finger" title="trifinger_simulation.pinocchio_utils.Kinematics.inverse_kinematics_one_finger"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inverse_kinematics_one_finger()</span></code></a>.</p></li>
 </ul>
@@ -143,7 +144,7 @@ each finger.</p></li>
 of (x,y,z)-errors of the tip positions.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><em>Tuple</em>[numpy.ndarray, <em>List</em>[numpy.ndarray]]</p>
+<dd class="field-odd"><p><em>Tuple</em>[<em>ndarray</em>, <em>List</em>[<em>ndarray</em>]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -158,11 +159,11 @@ of (x,y,z)-errors of the tip positions.</p>
 <li><p><strong>finger_idx</strong> (<em>int</em>) – Index of the finger.</p></li>
 <li><p><strong>tip_target_positions</strong> – Target position for the finger tip in world
 frame.</p></li>
-<li><p><strong>joint_angles_guess</strong> (<em>numpy.ndarray</em>) – Initial guess for the joint angles.</p></li>
+<li><p><strong>joint_angles_guess</strong> (<em>ndarray</em>) – Initial guess for the joint angles.</p></li>
 <li><p><strong>tolerance</strong> (<em>float</em>) – Position error tolerance.  Stop if the error is less
 then that.</p></li>
 <li><p><strong>max_iterations</strong> (<em>int</em>) – Max. number of iterations.</p></li>
-<li><p><strong>tip_target_position</strong> (<em>numpy.ndarray</em>) – </p></li>
+<li><p><strong>tip_target_position</strong> (<em>ndarray</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -171,7 +172,7 @@ part of the specified finger, the values from the initial guess are
 kept).  Second element is (x,y,z)-error of the tip position.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><em>Tuple</em>[numpy.ndarray, numpy.ndarray]</p>
+<dd class="field-odd"><p><em>Tuple</em>[<em>ndarray</em>, <em>ndarray</em>]</p>
 </dd>
 </dl>
 </dd></dl>

@@ -15,6 +15,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
@@ -95,10 +96,10 @@
            <div itemprop="articleBody">
              
   <section id="module-trifinger_simulation.camera">
-<span id="module-camera"></span><h1>Module camera<a class="headerlink" href="#module-trifinger_simulation.camera" title="Permalink to this headline"></a></h1>
+<span id="module-camera"></span><h1>Module camera<a class="headerlink" href="#module-trifinger_simulation.camera" title="Permalink to this heading"></a></h1>
 <p>Classes and functions for simulating cameras.</p>
 <section id="simple-vs-calibrated-camera">
-<h2>Simple vs Calibrated Camera<a class="headerlink" href="#simple-vs-calibrated-camera" title="Permalink to this headline"></a></h2>
+<h2>Simple vs Calibrated Camera<a class="headerlink" href="#simple-vs-calibrated-camera" title="Permalink to this heading"></a></h2>
 <p>There are two different camera implementations: <a class="reference internal" href="#trifinger_simulation.camera.Camera" title="trifinger_simulation.camera.Camera"><code class="xref py py-class docutils literal notranslate"><span class="pre">Camera</span></code></a> and
 <a class="reference internal" href="#trifinger_simulation.camera.CalibratedCamera" title="trifinger_simulation.camera.CalibratedCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">CalibratedCamera</span></code></a>.</p>
 <p><a class="reference internal" href="#trifinger_simulation.camera.Camera" title="trifinger_simulation.camera.Camera"><code class="xref py py-class docutils literal notranslate"><span class="pre">Camera</span></code></a> first one only takes the camera’s position, orientation and
@@ -114,7 +115,7 @@ as applying the distortion takes some time.</p>
 cameras of a TriFinger platform, <code class="xref py py-func docutils literal notranslate"><span class="pre">load_camera_parameters()</span></code> can be used.</p>
 </section>
 <section id="camera-arrays">
-<h2>Camera Arrays<a class="headerlink" href="#camera-arrays" title="Permalink to this headline"></a></h2>
+<h2>Camera Arrays<a class="headerlink" href="#camera-arrays" title="Permalink to this heading"></a></h2>
 <p><a class="reference internal" href="#trifinger_simulation.camera.CameraArray" title="trifinger_simulation.camera.CameraArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">CameraArray</span></code></a> provides a simple interface to get images from an
 arbitrary number of cameras.</p>
 <p>When specifically simulating the three-camera-setup of the TriFinger platform,
@@ -247,7 +248,7 @@ simulated camera.</p>
 <dd><p>Array of an arbitrary number of cameras.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cameras</strong> (<em>Sequence</em><em>[</em><em>trifinger_simulation.camera.BaseCamera</em><em>]</em>) – List of cameras.</p>
+<dd class="field-odd"><p><strong>cameras</strong> (<em>Sequence</em><em>[</em><em>BaseCamera</em><em>]</em>) – List of cameras.</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -258,7 +259,7 @@ simulated camera.</p>
 instead of RGB.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><em>List</em>[numpy.ndarray]</p>
+<dd class="field-odd"><p><em>List</em>[<em>ndarray</em>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -273,7 +274,7 @@ instead of RGB.</p>
 <dd class="field-odd"><p>List of RGB images, one per camera.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><em>List</em>[numpy.ndarray]</p>
+<dd class="field-even"><p><em>List</em>[<em>ndarray</em>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -292,9 +293,9 @@ instead of RGB.</p>
 <li><p><strong>name</strong> (<em>str</em>) – </p></li>
 <li><p><strong>width</strong> (<em>int</em>) – </p></li>
 <li><p><strong>height</strong> (<em>int</em>) – </p></li>
-<li><p><strong>camera_matrix</strong> (<em>numpy.ndarray</em>) – </p></li>
-<li><p><strong>distortion_coefficients</strong> (<em>numpy.ndarray</em>) – </p></li>
-<li><p><strong>tf_world_to_camera</strong> (<em>numpy.ndarray</em>) – </p></li>
+<li><p><strong>camera_matrix</strong> (<em>ndarray</em>) – </p></li>
+<li><p><strong>distortion_coefficients</strong> (<em>ndarray</em>) – </p></li>
+<li><p><strong>tf_world_to_camera</strong> (<em>ndarray</em>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -322,20 +323,20 @@ instead of RGB.</p>
 YAML.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#trifinger_simulation.camera.CameraParameters" title="trifinger_simulation.camera.CameraParameters">trifinger_simulation.camera.CameraParameters</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#trifinger_simulation.camera.CameraParameters" title="trifinger_simulation.camera.CameraParameters"><em>CameraParameters</em></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.camera.CameraParameters.camera_matrix">
-<span class="sig-name descname"><span class="pre">camera_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.camera.CameraParameters.camera_matrix" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">camera_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.camera.CameraParameters.camera_matrix" title="Permalink to this definition"></a></dt>
 <dd><p>Camera projection matrix.  Shape = (3, 3)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.camera.CameraParameters.distortion_coefficients">
-<span class="sig-name descname"><span class="pre">distortion_coefficients</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.camera.CameraParameters.distortion_coefficients" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">distortion_coefficients</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.camera.CameraParameters.distortion_coefficients" title="Permalink to this definition"></a></dt>
 <dd><p>Distortion coefficients.  Shape = (5,)</p>
 </dd></dl>
 
@@ -353,7 +354,7 @@ YAML.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.camera.CameraParameters.tf_world_to_camera">
-<span class="sig-name descname"><span class="pre">tf_world_to_camera</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.camera.CameraParameters.tf_world_to_camera" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tf_world_to_camera</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.camera.CameraParameters.tf_world_to_camera" title="Permalink to this definition"></a></dt>
 <dd><p>Transformation matrix from world to camera frame.  Shape = (4, 4)</p>
 </dd></dl>
 
@@ -391,7 +392,7 @@ that are more closely matching those of the real cameras use
 <dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – </p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>numpy.ndarray</p>
+<dd class="field-even"><p><em>ndarray</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -403,7 +404,7 @@ that are more closely matching those of the real cameras use
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>camera_parameters</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="#trifinger_simulation.camera.CameraParameters" title="trifinger_simulation.camera.CameraParameters"><em>trifinger_simulation.camera.CameraParameters</em></a><em>]</em>) – List of camera calibration parameters for the three
+<li><p><strong>camera_parameters</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="#trifinger_simulation.camera.CameraParameters" title="trifinger_simulation.camera.CameraParameters"><em>CameraParameters</em></a><em>]</em>) – List of camera calibration parameters for the three
 cameras.</p></li>
 <li><p><strong>pybullet_client_id</strong> – Id of the pybullet client (needed when multiple
 clients are running in parallel).</p></li>
@@ -413,7 +414,7 @@ clients are running in parallel).</p></li>
 <dd class="field-even"><p>CameraArray with three cameras.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#trifinger_simulation.camera.CameraArray" title="trifinger_simulation.camera.CameraArray">trifinger_simulation.camera.CameraArray</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#trifinger_simulation.camera.CameraArray" title="trifinger_simulation.camera.CameraArray"><em>CameraArray</em></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -427,7 +428,7 @@ create a <a class="reference internal" href="#trifinger_simulation.camera.Camera
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config_dir</strong> (<em>pathlib.Path</em>) – Directory containing the camera calibration files.</p></li>
+<li><p><strong>config_dir</strong> (<em>Path</em>) – Directory containing the camera calibration files.</p></li>
 <li><p><strong>calib_filename_pattern</strong> – Template for the camera calibration file
 names.  ‘{id}’ will be replaced with the camera id (60, 180, 300).</p></li>
 <li><p><strong>pybullet_client_id</strong> – Id of the pybullet client (needed when multiple
@@ -438,7 +439,7 @@ clients are running in parallel).</p></li>
 <dd class="field-even"><p>CameraArray with three cameras.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#trifinger_simulation.camera.CameraArray" title="trifinger_simulation.camera.CameraArray">trifinger_simulation.camera.CameraArray</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#trifinger_simulation.camera.CameraArray" title="trifinger_simulation.camera.CameraArray"><em>CameraArray</em></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -453,7 +454,7 @@ testing the full software pipeline with the same conditions as on the real
 robot.  It is not optimized of realistic images.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> (<em>numpy.ndarray</em>) – RGB image.</p>
+<dd class="field-odd"><p><strong>image</strong> (<em>ndarray</em>) – RGB image.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Bayer pattern based on the input image.  Height and width are the same
@@ -461,7 +462,7 @@ as of the input image.  The image can be converted using OpenCV’s
 <cite>COLOR_BAYER_BG2*</cite>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>numpy.ndarray</p>
+<dd class="field-odd"><p><em>ndarray</em></p>
 </dd>
 </dl>
 </dd></dl>

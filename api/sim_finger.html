@@ -15,6 +15,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -94,7 +95,7 @@
            <div itemprop="articleBody">
              
   <section id="the-simfinger-class">
-<h1>The SimFinger Class<a class="headerlink" href="#the-simfinger-class" title="Permalink to this headline"></a></h1>
+<h1>The SimFinger Class<a class="headerlink" href="#the-simfinger-class" title="Permalink to this heading"></a></h1>
 <p>The <a class="reference internal" href="#trifinger_simulation.SimFinger" title="trifinger_simulation.SimFinger"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimFinger</span></code></a> class provides a simulation
 environment for the different finger robots: these include the TriFingerEdu, our
 reproducible open-source robot platform; the TriFingerPro, and the TriFingerOne.
@@ -107,7 +108,7 @@ which makes it easy to transfer code between simulation and real robot.</p>
 <a class="reference internal" href="trifingerplatform.html#trifinger_simulation.TriFingerPlatform" title="trifinger_simulation.TriFingerPlatform"><code class="xref py py-class docutils literal notranslate"><span class="pre">TriFingerPlatform</span></code></a>, which is a wrapper around
 <a class="reference internal" href="#trifinger_simulation.SimFinger" title="trifinger_simulation.SimFinger"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimFinger</span></code></a>.</p>
 <section id="desired-vs-applied-action">
-<span id="id1"></span><h2>Desired vs Applied Action<a class="headerlink" href="#desired-vs-applied-action" title="Permalink to this headline"></a></h2>
+<span id="id1"></span><h2>Desired vs Applied Action<a class="headerlink" href="#desired-vs-applied-action" title="Permalink to this heading"></a></h2>
 <p>The action given by the user is called the <em>desired</em> action.  This action may be
 altered before it is actually applied on the robot, e.g. by some safety checks
 limiting torque and velocity.  This altered action is called the <em>applied</em>
@@ -116,7 +117,7 @@ action.  You may use
 actually got applied on the robot.</p>
 </section>
 <section id="api-documentation">
-<h2>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline"></a></h2>
+<h2>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="trifinger_simulation.SimFinger">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trifinger_simulation.</span></span><span class="sig-name descname"><span class="pre">SimFinger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finger_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_visualization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robot_position_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trifinger_simulation/sim_finger.html#SimFinger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trifinger_simulation.SimFinger" title="Permalink to this definition"></a></dt>
@@ -148,8 +149,8 @@ default values, depending on the finger type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>torque</strong> (<em>Optional</em><em>[</em><em>numpy.ndarray</em><em>]</em>) – Torques to apply to the joints.  Defaults to zero.</p></li>
-<li><p><strong>position</strong> (<em>Optional</em><em>[</em><em>numpy.ndarray</em><em>]</em>) – Angular target positions for the joints.  If set to NaN
+<li><p><strong>torque</strong> (<em>Optional</em><em>[</em><em>ndarray</em><em>]</em>) – Torques to apply to the joints.  Defaults to zero.</p></li>
+<li><p><strong>position</strong> (<em>Optional</em><em>[</em><em>ndarray</em><em>]</em>) – Angular target positions for the joints.  If set to NaN
 for a joint, no position control is run for this joint.
 Defaults to all NaN.</p></li>
 </ul>
@@ -158,7 +159,7 @@ Defaults to all NaN.</p></li>
 <dd class="field-even"><p>The resulting action.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#trifinger_simulation.Action" title="trifinger_simulation.action.Action">trifinger_simulation.action.Action</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#trifinger_simulation.Action" title="trifinger_simulation.action.Action"><em>Action</em></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -171,7 +172,7 @@ action will be applied to the motors.</p>
 <p>This method steps the simulation!</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>action</strong> (<a class="reference internal" href="#trifinger_simulation.Action" title="trifinger_simulation.action.Action"><em>trifinger_simulation.action.Action</em></a>) – Action to be applied on the robot.</p>
+<dd class="field-odd"><p><strong>action</strong> (<a class="reference internal" href="#trifinger_simulation.Action" title="trifinger_simulation.action.Action"><em>Action</em></a>) – Action to be applied on the robot.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The current time index t at which the action is applied.</p>
@@ -202,7 +203,7 @@ the current step (return value of the last call of
 <dd class="field-odd"><p><strong>ValueError</strong> – If invalid time index <code class="docutils literal notranslate"><span class="pre">t</span></code> is passed.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#trifinger_simulation.Action" title="trifinger_simulation.action.Action">trifinger_simulation.action.Action</a></p>
+<dd class="field-even"><p><a class="reference internal" href="#trifinger_simulation.Action" title="trifinger_simulation.action.Action"><em>Action</em></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -235,7 +236,7 @@ the current step (return value of the last call of
 <dd class="field-odd"><p><strong>ValueError</strong> – If invalid time index <code class="docutils literal notranslate"><span class="pre">t</span></code> is passed.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#trifinger_simulation.Action" title="trifinger_simulation.action.Action">trifinger_simulation.action.Action</a></p>
+<dd class="field-even"><p><a class="reference internal" href="#trifinger_simulation.Action" title="trifinger_simulation.action.Action"><em>Action</em></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -260,7 +261,7 @@ the current step (return value of the last call of
 <dd class="field-odd"><p><strong>ValueError</strong> – If invalid time index <code class="docutils literal notranslate"><span class="pre">t</span></code> is passed.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#trifinger_simulation.Observation" title="trifinger_simulation.observation.Observation">trifinger_simulation.observation.Observation</a></p>
+<dd class="field-even"><p><a class="reference internal" href="#trifinger_simulation.Observation" title="trifinger_simulation.observation.Observation"><em>Observation</em></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -347,38 +348,38 @@ number of joints of the robot (e.g. 9 for TriFinger robots).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>torque</strong> (<em>numpy.ndarray</em>) – See <a class="reference internal" href="#trifinger_simulation.Action.torque" title="trifinger_simulation.Action.torque"><code class="xref py py-attr docutils literal notranslate"><span class="pre">torque</span></code></a>.</p></li>
-<li><p><strong>position</strong> (<em>numpy.ndarray</em>) – See <a class="reference internal" href="#trifinger_simulation.Action.position" title="trifinger_simulation.Action.position"><code class="xref py py-attr docutils literal notranslate"><span class="pre">position</span></code></a>.</p></li>
-<li><p><strong>kp</strong> (<em>Optional</em><em>[</em><em>numpy.ndarray</em><em>]</em>) – See <a class="reference internal" href="#trifinger_simulation.Action.position_kp" title="trifinger_simulation.Action.position_kp"><code class="xref py py-attr docutils literal notranslate"><span class="pre">position_kp</span></code></a>.  If not set, default gains are used
+<li><p><strong>torque</strong> (<em>ndarray</em>) – See <a class="reference internal" href="#trifinger_simulation.Action.torque" title="trifinger_simulation.Action.torque"><code class="xref py py-attr docutils literal notranslate"><span class="pre">torque</span></code></a>.</p></li>
+<li><p><strong>position</strong> (<em>ndarray</em>) – See <a class="reference internal" href="#trifinger_simulation.Action.position" title="trifinger_simulation.Action.position"><code class="xref py py-attr docutils literal notranslate"><span class="pre">position</span></code></a>.</p></li>
+<li><p><strong>kp</strong> (<em>Optional</em><em>[</em><em>ndarray</em><em>]</em>) – See <a class="reference internal" href="#trifinger_simulation.Action.position_kp" title="trifinger_simulation.Action.position_kp"><code class="xref py py-attr docutils literal notranslate"><span class="pre">position_kp</span></code></a>.  If not set, default gains are used
 for all joints.</p></li>
-<li><p><strong>kd</strong> (<em>Optional</em><em>[</em><em>numpy.ndarray</em><em>]</em>) – See <a class="reference internal" href="#trifinger_simulation.Action.position_kd" title="trifinger_simulation.Action.position_kd"><code class="xref py py-attr docutils literal notranslate"><span class="pre">position_kd</span></code></a>.  If not set, default gains are used
+<li><p><strong>kd</strong> (<em>Optional</em><em>[</em><em>ndarray</em><em>]</em>) – See <a class="reference internal" href="#trifinger_simulation.Action.position_kd" title="trifinger_simulation.Action.position_kd"><code class="xref py py-attr docutils literal notranslate"><span class="pre">position_kd</span></code></a>.  If not set, default gains are used
 for all joints.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.Action.torque">
-<span class="sig-name descname"><span class="pre">torque</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Action.torque" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">torque</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Action.torque" title="Permalink to this definition"></a></dt>
 <dd><p>Torque commands for the joints.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.Action.position">
-<span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Action.position" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Action.position" title="Permalink to this definition"></a></dt>
 <dd><p>Position commands for the joints. Set to NaN to disable position control
 for the corresponding joint.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.Action.position_kp">
-<span class="sig-name descname"><span class="pre">position_kp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Action.position_kp" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">position_kp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Action.position_kp" title="Permalink to this definition"></a></dt>
 <dd><p>P-gain for position controller.  Set to NaN to use default gain for the
 corresponding joint.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.Action.position_kd">
-<span class="sig-name descname"><span class="pre">position_kd</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Action.position_kd" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">position_kd</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Action.position_kd" title="Permalink to this definition"></a></dt>
 <dd><p>D-gain for position controller.  Set to NaN to use default gain for the
 corresponding joint.</p>
 </dd></dl>
@@ -392,25 +393,25 @@ corresponding joint.</p>
 <dd><p>Robot state observation.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.Observation.position">
-<span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Observation.position" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Observation.position" title="Permalink to this definition"></a></dt>
 <dd><p>Angular joint positions in radian.  Shape = (n_joints,)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.Observation.velocity">
-<span class="sig-name descname"><span class="pre">velocity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Observation.velocity" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">velocity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Observation.velocity" title="Permalink to this definition"></a></dt>
 <dd><p>Joint velocities in rad/s.  Shape = (n_joints,)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.Observation.torque">
-<span class="sig-name descname"><span class="pre">torque</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Observation.torque" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">torque</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Observation.torque" title="Permalink to this definition"></a></dt>
 <dd><p>Joint torques in Nm.  Shape = (n_joints,)</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trifinger_simulation.Observation.tip_force">
-<span class="sig-name descname"><span class="pre">tip_force</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Observation.tip_force" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tip_force</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#trifinger_simulation.Observation.tip_force" title="Permalink to this definition"></a></dt>
 <dd><p>Measurement of the push sensors on the finger tips.
 Shape = (n_fingers,)</p>
 </dd></dl>
