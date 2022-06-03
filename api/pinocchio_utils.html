@@ -109,18 +109,27 @@ arbitrarily many independent fingers.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="trifinger_simulation.pinocchio_utils.Kinematics.forward_kinematics">
-<span class="sig-name descname"><span class="pre">forward_kinematics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_positions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trifinger_simulation/pinocchio_utils.html#Kinematics.forward_kinematics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trifinger_simulation.pinocchio_utils.Kinematics.forward_kinematics" title="Permalink to this definition"></a></dt>
-<dd><p>Compute end-effector positions for the given joint configuration.</p>
+<span class="sig-name descname"><span class="pre">forward_kinematics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_positions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joint_velocities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trifinger_simulation/pinocchio_utils.html#Kinematics.forward_kinematics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trifinger_simulation.pinocchio_utils.Kinematics.forward_kinematics" title="Permalink to this definition"></a></dt>
+<dd><p>Compute end-effector positions (and velocities) for the given joint configuration.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>joint_positions</strong> – Flat list of angular joint positions.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>joint_positions</strong> (<em>List</em><em>[</em><em>ndarray</em><em>]</em>) – Flat list of angular joint positions.</p></li>
+<li><p><strong>joint_velocities</strong> (<em>Optional</em><em>[</em><em>ndarray</em><em>]</em>) – Optional. Flat list of angular joint
+velocities.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>List of end-effector positions. Each position is given as an
-np.array with x,y,z positions.</p>
+<dd class="field-even"><p>List of end-effector
+positions. Each position is given as an np.array with x,y,z
+positions.
+If joint positions and velocities are given: Tuple with
+(i) list of end-effector positions and (ii) list of
+end-effector velocities. Each position and velocity is given
+as an np.array with x,y,z components.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><em>List</em>[<em>ndarray</em>]</p>
+<dd class="field-odd"><p>If only joint positions are given</p>
 </dd>
 </dl>
 </dd></dl>
