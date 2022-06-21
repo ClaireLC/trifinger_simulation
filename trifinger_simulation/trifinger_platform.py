@@ -143,6 +143,7 @@ class TriFingerPlatform:
         time_step_s: float = 0.001,
         object_type: ObjectType = ObjectType.COLORED_CUBE,
         camera_delay_steps: int = 90,  # default based on real robot data
+        finger_type = "trifingerpro",
     ):
         """Initialize.
 
@@ -192,7 +193,7 @@ class TriFingerPlatform:
         # ====================================
 
         self.simfinger = SimFinger(
-            finger_type="trifingerpro",
+            finger_type=finger_type,
             time_step=self._time_step,
             enable_visualization=visualization,
         )
