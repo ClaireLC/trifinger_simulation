@@ -118,6 +118,11 @@ class SimFinger:
             self.finger_urdf_path, self.tip_link_names
         )
 
+    def reset(self):
+        """ Reset internal time counter """
+
+        self._t = -1
+
     def Action(
         self, torque: np.ndarray = None, position: np.ndarray = None
     ) -> trifinger_simulation.Action:
@@ -359,8 +364,11 @@ class SimFinger:
         for i in range(len(finger_contact_states)):
             directed_contact_force = 0.0
             try:
-                for contact_point in finger_contact_states[i]:
-                    directed_contact_force += np.array(contact_point[9])
+                if finger_contact_states is not None:
+                    for contact_point in finger_contact_states[i]:
+                        directed_contact_force += np.array(contact_point[9])
+                else:
+                    directed_contact_force = 0.0
             except IndexError:
                 pass
             tip_forces.append(directed_contact_force)
@@ -654,7 +662,7 @@ class SimFinger:
         # (Tri)Finger robots (mostly moves it closer to the robot as the
         # default).
         pybullet.resetDebugVisualizerCamera(
-            cameraDistance=1.0,
+            cameraDistance=0.5,
             cameraYaw=100.0,
             cameraPitch=-30.0,
             cameraTargetPosition=(0, 0, 0.2),
