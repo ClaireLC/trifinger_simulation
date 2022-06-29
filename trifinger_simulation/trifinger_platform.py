@@ -5,6 +5,7 @@ import numpy as np
 import gym
 from types import SimpleNamespace
 import typing
+import pybullet
 
 from .tasks import move_cube, rearrange_dice
 from .sim_finger import SimFinger, int_to_rgba
@@ -201,6 +202,8 @@ class TriFingerPlatform:
         if initial_robot_position is None:
             initial_robot_position = self.spaces.robot_position.default
 
+        self.initial_robot_position = initial_robot_position
+
         self.simfinger.reset_finger_positions_and_velocities(
             initial_robot_position
         )
@@ -258,6 +261,45 @@ class TriFingerPlatform:
             "initial_object_pose": copy.copy(initial_object_pose),
             "actions": [],
         }
+
+        # get initial camera observation
+        self._delayed_camera_observation = (
+            self._get_current_camera_observation(0)
+        )
+        self._camera_observation_t = self._delayed_camera_observation
+
+    def reset(self, initial_object_pose=None):
+    
+        self.simfinger.reset()
+
+        # Reset cameras
+        # Time step at which the next camera update is triggered
+        self._next_camera_trigger_t = 0
+        # Time step at which the last triggered camera update is ready (used to
+        # simulate delay).
+        self._next_camera_observation_ready_t: typing.Optional[int] = None
+        self.tricamera = camera.TriFingerCameras(
+            pybullet_client_id=self.simfinger._pybullet_client_id
+        )
+
+        # Initialize log
+        self._action_log = {
+            "initial_robot_position": copy.copy(self.initial_robot_position),
+            "initial_object_pose": copy.copy(initial_object_pose),
+            "actions": [],
+        }
+
+        # Reset finger
+        self.simfinger.reset_finger_positions_and_velocities(
+            self.initial_robot_position
+        )
+
+        # Reset object
+        obj_id = self.cube._object_id
+        if initial_object_pose is None:
+            initial_object_pose = initial_object_pose
+        pybullet.resetBasePositionAndOrientation(obj_id, 
+            initial_object_pose.position, initial_object_pose.orientation)
 
         # get initial camera observation
         self._delayed_camera_observation = (
