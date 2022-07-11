@@ -19,11 +19,13 @@ class Marker:
         Args:
             number_of_goals (int): the desired number of goals to display
             goal_size (float): how big should this goal be
-            initial_position (list of floats): where in xyz space should the
-                goal first be displayed
+            initial_position (list of lists of floats): initial xyz positions of markers
         """
         self._kwargs = kwargs
-        color_cycle = [[1, 0, 0, 1], [0, 1, 0, 1], [0, 0, 1, 1]]
+        color_cycle = [[1, 0, 0, 1], [0, 1, 0, 1], [0, 0, 1, 1], 
+                       [1, 1, 0, 1], [0, 1, 1, 1], [1, 0, 1, 1],
+                       [0, 0, 0, 1], [1, 1, 1, 1],
+                      ]
 
         goal_shape_ids = [None] * number_of_goals
         self.goal_ids = [None] * number_of_goals
@@ -42,7 +44,7 @@ class Marker:
             )
             self.goal_ids[i] = pybullet.createMultiBody(
                 baseVisualShapeIndex=goal_shape_ids[i],
-                basePosition=initial_position,
+                basePosition=initial_position[i],
                 baseOrientation=[0, 0, 0, 1],
                 **self._kwargs,
             )
