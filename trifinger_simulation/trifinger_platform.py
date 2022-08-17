@@ -268,7 +268,7 @@ class TriFingerPlatform:
         )
         self._camera_observation_t = self._delayed_camera_observation
 
-    def reset(self, initial_object_pose=None):
+    def reset(self, initial_object_pose=None, initial_robot_position=None):
     
         self.simfinger.reset()
 
@@ -282,16 +282,19 @@ class TriFingerPlatform:
             pybullet_client_id=self.simfinger._pybullet_client_id
         )
 
+        if initial_robot_position is None:
+            initial_robot_position = self.initial_robot_position
+
         # Initialize log
         self._action_log = {
-            "initial_robot_position": copy.copy(self.initial_robot_position),
+            "initial_robot_position": copy.copy(initial_robot_position),
             "initial_object_pose": copy.copy(initial_object_pose),
             "actions": [],
         }
 
         # Reset finger
         self.simfinger.reset_finger_positions_and_velocities(
-            self.initial_robot_position
+            initial_robot_position
         )
 
         # Reset object
