@@ -438,6 +438,9 @@ def evaluate_state(
         # goal_corners = get_cube_corner_positions(goal_pose)
         # actual_corners = get_cube_corner_positions(actual_pose)
         # disp = max(np.linalg.norm(goal_corners - actual_corners, axis=1))
+    elif difficulty in (8, 9):
+        # consider only 3d position
+        return weighted_position_error()
     else:
         raise ValueError("Invalid difficulty %d" % difficulty)
 
