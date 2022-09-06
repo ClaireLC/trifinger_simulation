@@ -155,10 +155,19 @@ def sample_goal(difficulty):
     """
     # difficulty -1 is for initialization
 
-    def random_xy():
+    def random_xy(sample_radius=None):
+        """ 
+        Sample random position for cube, within arena radius
+        args:
+            sample_radius: If specified, sample within this radius
+        """
         # sample uniform position in circle
         # (https://stackoverflow.com/a/50746409)
-        radius = _max_cube_com_distance_to_center * np.sqrt(random.random())
+        if sample_radius:
+            radius = sample_radius * np.sqrt(random.random())
+        else:
+            # Full object range
+            radius = _max_cube_com_distance_to_center * np.sqrt(random.random())
         theta = random.uniform(0, 2 * np.pi)
 
         # x,y-position of the cube
@@ -180,7 +189,7 @@ def sample_goal(difficulty):
 
     if difficulty == -1:  # for initialization
         # on the ground, random yaw
-        x, y = random_xy()
+        x, y = random_xy(sample_radius=0.09)
         z = _CUBE_WIDTH / 2
         orientation = random_yaw_orientation()
 
