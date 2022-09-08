@@ -24,9 +24,14 @@ robot_torque = SimpleNamespace(
     default=np.zeros(n_joints, dtype=np.float32),
 )
 #: Joint position limits [rad]
+tol = 0.005
+# Note: tol is the tolerance for joint limits. We found that PyBullet will allow
+# the robot to slightly exceed the joint limits defined in the URDF before
+# limiting the joint motion. So, to avoid violating the limits defined here,
+# we add a small tolerance to them.
 robot_position = SimpleNamespace(
-    low=np.array([-0.33, 0.0, -2.7] * n_fingers, dtype=np.float32),
-    high=np.array([1.0, 1.57, 0.0] * n_fingers, dtype=np.float32),
+    low=np.array([-0.33-tol, 0.0-tol, -2.7-tol] * n_fingers, dtype=np.float32),
+    high=np.array([1.0+tol, 1.57+tol, 0.0+tol] * n_fingers, dtype=np.float32),
     default=np.array([0.0, 0.9, -1.7] * n_fingers, dtype=np.float32),
 )
 #: Joint velocity limits [rad/s]
