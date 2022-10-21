@@ -39,6 +39,11 @@ finger_types_data = {
         number_of_fingers=3,
         initial_joint_positions=[0, 0.9, -1.7] * 3,
     ),
+    "trifingernyu": FingerTypesDataFormat(
+        urdf_file="edu/trifingernyu.urdf",
+        number_of_fingers=3,
+        initial_joint_positions=[0, 0.9, -1.7] * 3,
+    ),
     "fingerpro": FingerTypesDataFormat(
         urdf_file="pro/fingerpro.urdf",
         number_of_fingers=1,

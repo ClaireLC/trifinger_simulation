@@ -907,6 +907,22 @@ class SimFinger:
                 color_rgba=high_border_colour,
                 pybullet_client_id=self._pybullet_client_id,
             )
+
+        elif self.finger_type == "trifingernyu":
+            table_colour = np.array((53.0, 58.0, 50.0, 255.0)) / 255.0
+            high_border_colour = int_to_rgba(0x8F8D95)
+
+            # use a simple cuboid for the table
+            self._table_id = collision_objects.Cuboid(
+                position=(0, 0, -0.005),
+                orientation=(0, 0, 0, 1),
+                half_extents=(0.38, 0.38, 0.005),
+                mass=0,  # static object
+                color_rgba=table_colour,
+                pybullet_client_id=self._pybullet_client_id,
+            )
+
+            # no object containment
         else:
             raise ValueError("Invalid finger type '%s'" % self.finger_type)
 

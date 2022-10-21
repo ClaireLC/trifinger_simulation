@@ -164,7 +164,11 @@ def sample_goal(difficulty):
         # sample uniform position in circle
         # (https://stackoverflow.com/a/50746409)
         if sample_radius:
-            radius = sample_radius * np.sqrt(random.random())
+            if isinstance(sample_radius, (list, np.ndarray)):
+                rmin, rmax = sample_radius[0], sample_radius[1]
+                radius = np.sqrt(random.random() * (rmax**2 - rmin**2) + rmin**2)
+            else:
+                radius = sample_radius * np.sqrt(random.random())
         else:
             # Full object range
             radius = _max_cube_com_distance_to_center * np.sqrt(random.random())
@@ -190,6 +194,12 @@ def sample_goal(difficulty):
     if difficulty == -1:  # for initialization
         # on the ground, random yaw
         x, y = random_xy(sample_radius=0.09)
+        z = _CUBE_WIDTH / 2
+        orientation = random_yaw_orientation()
+
+    elif difficulty == -2: # for initialization with the cube far from the center
+        # on the ground, random yaw
+        x, y = random_xy(sample_radius=[0.2, 0.25])
         z = _CUBE_WIDTH / 2
         orientation = random_yaw_orientation()
 
