@@ -180,9 +180,11 @@ def sample_goal(difficulty):
 
         return x, y
 
-    def random_yaw_orientation():
-        # first "roll the die" to see which face is pointing upward
-        up_face = random.choice(range(len(_base_orientations)))
+    def random_yaw_orientation(up_face=None):
+        if up_face is None:
+            # first "roll the die" to see which face is pointing upward
+            up_face = random.choice(range(len(_base_orientations)))
+        
         up_face_rot = _base_orientations[up_face]
         # then draw a random yaw rotation
         yaw_angle = random.uniform(0, 2 * np.pi)
@@ -204,7 +206,7 @@ def sample_goal(difficulty):
         orientation = random_yaw_orientation()
 
     elif difficulty == 1:
-        x, y = random_xy()
+        x, y = random_xy(0.12)
         z = _CUBE_WIDTH / 2
         orientation = np.array([0, 0, 0, 1])
 
@@ -215,7 +217,7 @@ def sample_goal(difficulty):
         orientation = np.array([0, 0, 0, 1])
 
     elif difficulty == 3:
-        x, y = random_xy()
+        x, y = random_xy(0.12)
         z = random.uniform(_min_height, _max_height)
         orientation = np.array([0, 0, 0, 1])
 
