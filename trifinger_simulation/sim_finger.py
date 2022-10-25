@@ -923,6 +923,28 @@ class SimFinger:
             )
 
             # no object containment
+        elif self.finger_type == "trifinger_meta":
+            table_colour = [0.13, 0.13, 0.13, 1.0] # Black
+            high_border_colour = [0.1, 0.1, 0.1, 1.0] # Black
+
+            # use a simple cuboid for the table
+            self._table_id = collision_objects.Cuboid(
+                position=(0, 0, -0.005),
+                orientation=(0, 0, 0, 1),
+                half_extents=(0.38, 0.38, 0.005),
+                mass=0,  # static object
+                color_rgba=table_colour,
+                pybullet_client_id=self._pybullet_client_id,
+            )
+
+            # object containment
+            self._containment_id = collision_objects.import_mesh(
+                mesh_path("object_containment_sim.stl"),
+                position=[0, 0, 0],
+                is_concave=True,
+                color_rgba=high_border_colour,
+                pybullet_client_id=self._pybullet_client_id,
+            )
         else:
             raise ValueError("Invalid finger type '%s'" % self.finger_type)
 

@@ -5,15 +5,14 @@
 <!-- =================================================================================== -->
 <robot name="trifingeredu">
   <!-- define material colors -->
-  <material name="fingeredu_material">
+  <material name="fingeredu_0_material">
     <color rgba="0.6 0.6 0.6 1.0"/>
   </material>
-  <material name="fingeredu_lower_link_material">
-    <color rgba="0.8 0.8 0.8 1.0"/>
+  <material name="fingeredu_120_material">
+    <color rgba="0.6 0.6 0.6 1.0"/>
   </material>
-  <material name="fingeredu_tip_material">
-    <!-- yellow -->
-    <color rgba="0.92 0.84 0.2 1.0"/>
+  <material name="fingeredu_240_material">
+    <color rgba="0.6 0.6 0.6 1.0"/>
   </material>
   <!--
     Frames are defined such that they all align with the base frame when all
@@ -51,7 +50,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_back.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_0_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.17995 0 0"/>
@@ -64,7 +63,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_front.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_0_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.025500000000000002 0 0"/>
@@ -77,7 +76,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_side_left.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_0_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.025500000000000002 0.02 0.08"/>
@@ -98,7 +97,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_top.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_0_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.025500000000000002 0 0.08"/>
@@ -120,7 +119,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/upper_link.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_0_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0195 0 0"/>
@@ -143,7 +142,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/middle_link.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_0_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -161,9 +160,9 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_fingers/meshes/edu/lower_link_notip.stl" scale="1 1 1"/>
+        <mesh filename="package://robot_properties_fingers/meshes/edu/lower_link.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_lower_link_material"/>
+      <material name="fingeredu_0_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -182,13 +181,6 @@
   </link>
   <!-- fixed link for finger tip -->
   <link name="finger_tip_link_0">
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robot_properties_fingers/meshes/edu/lower_link_tip_at_origin.stl" scale="1 1 1"/>
-      </geometry>
-      <material name="fingeredu_tip_material"/>
-    </visual>
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <mass value="0.01"/>
@@ -231,7 +223,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_back.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_120_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.17995 0 0"/>
@@ -244,7 +236,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_front.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_120_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.025500000000000002 0 0"/>
@@ -257,7 +249,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_side_left.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_120_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.025500000000000002 0.02 0.08"/>
@@ -278,7 +270,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_top.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_120_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.025500000000000002 0 0.08"/>
@@ -300,7 +292,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/upper_link.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_120_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0195 0 0"/>
@@ -323,7 +315,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/middle_link.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_120_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -341,9 +333,9 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_fingers/meshes/edu/lower_link_notip.stl" scale="1 1 1"/>
+        <mesh filename="package://robot_properties_fingers/meshes/edu/lower_link.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_lower_link_material"/>
+      <material name="fingeredu_120_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -362,13 +354,6 @@
   </link>
   <!-- fixed link for finger tip -->
   <link name="finger_tip_link_120">
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robot_properties_fingers/meshes/edu/lower_link_tip_at_origin.stl" scale="1 1 1"/>
-      </geometry>
-      <material name="fingeredu_tip_material"/>
-    </visual>
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <mass value="0.01"/>
@@ -411,7 +396,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_back.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_240_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.17995 0 0"/>
@@ -424,7 +409,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_front.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_240_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.025500000000000002 0 0"/>
@@ -437,7 +422,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_side_left.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_240_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.025500000000000002 0.02 0.08"/>
@@ -458,7 +443,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/base_top.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_240_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.025500000000000002 0 0.08"/>
@@ -480,7 +465,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/upper_link.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_240_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.0195 0 0"/>
@@ -503,7 +488,7 @@
       <geometry>
         <mesh filename="package://robot_properties_fingers/meshes/edu/middle_link.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_material"/>
+      <material name="fingeredu_240_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -521,9 +506,9 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_fingers/meshes/edu/lower_link_notip.stl" scale="1 1 1"/>
+        <mesh filename="package://robot_properties_fingers/meshes/edu/lower_link.stl" scale="1 1 1"/>
       </geometry>
-      <material name="fingeredu_lower_link_material"/>
+      <material name="fingeredu_240_material"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -542,13 +527,6 @@
   </link>
   <!-- fixed link for finger tip -->
   <link name="finger_tip_link_240">
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robot_properties_fingers/meshes/edu/lower_link_tip_at_origin.stl" scale="1 1 1"/>
-      </geometry>
-      <material name="fingeredu_tip_material"/>
-    </visual>
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <mass value="0.01"/>
