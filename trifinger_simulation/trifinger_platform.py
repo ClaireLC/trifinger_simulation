@@ -18,6 +18,7 @@ class ObjectType(enum.Enum):
     NONE = 0
     COLORED_CUBE = 1
     DICE = 2
+    GREEN_CUBE = 3
 
 
 class ObjectPose:
@@ -236,6 +237,13 @@ class TriFingerPlatform:
                 )
                 for pos in initial_positions
             ]
+        elif object_type == ObjectType.GREEN_CUBE:
+            self.cube = collision_objects.GreenCubeV2(
+                position=initial_object_pose.position,
+                orientation=initial_object_pose.orientation,
+                pybullet_client_id=self.simfinger._pybullet_client_id,
+            )
+            self._has_object_tracking = True
 
         self.tricamera = camera.TriFingerCameras(
             pybullet_client_id=self.simfinger._pybullet_client_id

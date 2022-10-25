@@ -243,3 +243,30 @@ class ColoredCubeV2(BaseCollisionObject):
             baseOrientation=orientation,
             physicsClientId=pybullet_client_id,
         )
+
+class GreenCubeV2(BaseCollisionObject):
+    """Model of the green "Cube v2"."""
+
+    def __init__(
+        self,
+        position: _SeqFloat = (0, 0, 0),
+        orientation: _SeqFloat = (0, 0, 0, 1),
+        pybullet_client_id: int = 0,
+    ):
+        """
+        Args:
+            position: Position at which the cube is spawned.
+            orientation: Orientation with which the cube is spawned.
+            pybullet_client_id:  Optional ID of the pybullet client.
+        """
+        self._pybullet_client_id = pybullet_client_id
+
+        cube_urdf_file = (
+            trifinger_simulation.get_data_dir() / "cube_v2/green_cube_v2.urdf"
+        )
+        self._object_id = pybullet.loadURDF(
+            fileName=str(cube_urdf_file),
+            basePosition=position,
+            baseOrientation=orientation,
+            physicsClientId=pybullet_client_id,
+        )
