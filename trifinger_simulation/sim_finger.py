@@ -74,6 +74,7 @@ class SimFinger:
         time_step: float = 0.001,
         enable_visualization: bool = False,
         robot_position_offset: typing.Sequence[float] = (0, 0, 0),
+        arena_color: str = "default",
     ):
         """
         Args:
@@ -90,6 +91,8 @@ class SimFinger:
                 the height of the fingers above the table.
         """
         self.finger_type = finger_types_data.check_finger_type(finger_type)
+        self.arena_color = arena_color
+
         self.number_of_fingers = finger_types_data.get_number_of_fingers(
             self.finger_type
         )
@@ -117,6 +120,7 @@ class SimFinger:
         self.kinematics = pinocchio_utils.Kinematics(
             self.finger_urdf_path, self.tip_link_names
         )
+
 
     def reset(self):
         """ Reset internal time counter """
@@ -924,8 +928,13 @@ class SimFinger:
 
             # no object containment
         elif self.finger_type == "trifinger_meta":
-            table_colour = [0.13, 0.13, 0.13, 1.0] # Black
-            high_border_colour = [0.1, 0.1, 0.1, 1.0] # Black
+            if self.arena_color == "real":
+                # Lighter colors
+                table_colour = [24/255,31/255,36/255, 1.0]
+                high_border_colour = [23/255, 37/255, 49/255, 1.0]
+            else:
+                table_colour = [0.13, 0.13, 0.13, 1.0] # Black
+                high_border_colour = [0.1, 0.1, 0.1, 1.0] # Black
 
             # use a simple cuboid for the table
             self._table_id = collision_objects.Cuboid(

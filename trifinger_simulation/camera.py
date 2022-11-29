@@ -156,6 +156,9 @@ class Camera(BaseCamera):
         near_plane_distance=0.001,
         far_plane_distance=100.0,
         pybullet_client_id=0,
+        enable_shadows=False,
+        target_position=None,
+        camera_up_vector=None,
     ):
         """
         Args:
@@ -172,14 +175,18 @@ class Camera(BaseCamera):
             camera_up_vector: the up axis of the camera
             pybullet_client_id:  Id of the pybullet client (needed when
                 multiple clients are running in parallel).
+            enable_shadows:  Set to true to enable shadow rendering in
+                camera images.
         """
         self._pybullet_client_id = pybullet_client_id
         self._width = image_size[0]
         self._height = image_size[1]
 
         camera_rot = Rotation.from_quat(camera_orientation)
-        target_position = camera_rot.apply([0, 0, 1])
-        camera_up_vector = camera_rot.apply([0, -1, 0])
+        if target_position is None:
+            target_position = camera_rot.apply([0, 0, 1])
+        if camera_up_vector is None:
+            camera_up_vector = camera_rot.apply([0, -1, 0])
 
         self._view_matrix = pybullet.computeViewMatrix(
             cameraEyePosition=camera_position,
@@ -195,6 +202,8 @@ class Camera(BaseCamera):
             farVal=far_plane_distance,
             physicsClientId=self._pybullet_client_id,
         )
+
+        self.enable_shadows = enable_shadows
 
     def get_image(
         self, renderer=pybullet.ER_BULLET_HARDWARE_OPENGL
@@ -219,6 +228,7 @@ class Camera(BaseCamera):
             projectionMatrix=self._proj_matrix,
             renderer=renderer,
             physicsClientId=self._pybullet_client_id,
+            shadow=self.enable_shadows,
         )
         # remove the alpha channel
         return img[:, :, :3]
@@ -601,24 +611,40 @@ class TriFingerCameras(CameraArray):
         :func:`create_trifinger_camera_array_from_config` instead.
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, camera_positions=None, target_positions=None, camera_up_vectors=None, **kwargs):
+
+        default_camera_positions = [
+            [0.2496, 0.2458, 0.4190],
+            [0.0047, -0.2834, 0.4558],
+            [-0.2470, 0.2513, 0.3943],
+        ]
+
+        if camera_positions is None:
+            camera_positions = default_camera_positions
+
         cameras = [
             # camera60
             Camera(
-                camera_position=[0.2496, 0.2458, 0.4190],
+                camera_position=camera_positions[0],
                 camera_orientation=[0.3760, 0.8690, -0.2918, -0.1354],
+                target_position=target_positions[0],
+                camera_up_vector=camera_up_vectors[0],
                 **kwargs,
             ),
             # camera180
             Camera(
-                camera_position=[0.0047, -0.2834, 0.4558],
+                camera_position=camera_positions[1],
                 camera_orientation=[0.9655, -0.0098, -0.0065, -0.2603],
+                target_position=target_positions[1],
+                camera_up_vector=camera_up_vectors[1],
                 **kwargs,
             ),
             # camera300
             Camera(
-                camera_position=[-0.2470, 0.2513, 0.3943],
+                camera_position=camera_positions[2],
                 camera_orientation=[-0.3633, 0.8686, -0.3141, 0.1220],
+                target_position=target_positions[2],
+                camera_up_vector=camera_up_vectors[2],
                 **kwargs,
             ),
         ]

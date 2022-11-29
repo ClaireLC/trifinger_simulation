@@ -145,7 +145,10 @@ class TriFingerPlatform:
         time_step_s: float = 0.001,
         object_type: ObjectType = ObjectType.COLORED_CUBE,
         camera_delay_steps: int = 90,  # default based on real robot data
-        finger_type = "trifingerpro",
+        finger_type: str = "trifingerpro",
+        enable_shadows: bool = False,
+        camera_view: str = "default",
+        arena_color: str = "default",
     ):
         """Initialize.
 
@@ -171,6 +174,8 @@ class TriFingerPlatform:
                 used to simulate the delay of the camera observation that is
                 happening on the real system due to processing (mostly the
                 object detection).
+            enable_shadows:  Set to true to enable shadow rendering in
+                camera images.
         """
         #: Camera rate in frames per second.  Observations of camera and
         #: object pose will only be updated with this rate.
@@ -178,6 +183,8 @@ class TriFingerPlatform:
 
         #: Set to true to render camera observations
         self.enable_cameras = enable_cameras
+        self.enable_shadows = enable_shadows
+        self.camera_view = camera_view
 
         #: Simulation time step
         self._time_step = time_step_s
@@ -198,6 +205,7 @@ class TriFingerPlatform:
             finger_type=finger_type,
             time_step=self._time_step,
             enable_visualization=visualization,
+            arena_color=arena_color,
         )
 
         if initial_robot_position is None:
@@ -245,9 +253,7 @@ class TriFingerPlatform:
             )
             self._has_object_tracking = True
 
-        self.tricamera = camera.TriFingerCameras(
-            pybullet_client_id=self.simfinger._pybullet_client_id
-        )
+        self.tricamera = self.make_camera()
 
         # Forward some methods for convenience
         # ====================================
@@ -276,6 +282,46 @@ class TriFingerPlatform:
         )
         self._camera_observation_t = self._delayed_camera_observation
 
+    def make_camera(self):
+
+        # Use default
+        if self.camera_view == "real":
+            # Compute camera positions based on radius
+            t60  =  30*np.pi/180
+            t180 = 270*np.pi/180
+            t300 = 150*np.pi/180
+            #r = 0.4
+            #z = 0.5
+            r = 0.45
+            z = 0.55
+            camera_positions = [
+                [r * np.cos(t60), r * np.sin(t60), z],
+                [r * np.cos(t180), r * np.sin(t180), z],
+                [r * np.cos(t300), r * np.sin(t300), z],
+            ]
+            target_positions = [[0,0,0], [0,0,0], [0,0,0]]
+            camera_up_vectors = [[0,0,1], [0,0,1], [0,0,1]]
+            field_of_view = 33
+        else:
+            # Use default camera
+            camera_positions = None
+            # Values will be computed from default camera_orientation
+            target_positions = [None, None, None]
+            camera_up_vectors = [None, None, None]
+            field_of_view = 52
+
+        tricamera = camera.TriFingerCameras(
+            camera_positions=camera_positions,
+            pybullet_client_id=self.simfinger._pybullet_client_id,
+            enable_shadows=self.enable_shadows,
+            field_of_view=field_of_view,
+            target_positions=target_positions,
+            camera_up_vectors=camera_up_vectors,
+        )
+
+
+        return tricamera
+
     def reset(self, initial_object_pose=None, initial_robot_position=None):
     
         self.simfinger.reset()
@@ -286,9 +332,7 @@ class TriFingerPlatform:
         # Time step at which the last triggered camera update is ready (used to
         # simulate delay).
         self._next_camera_observation_ready_t: typing.Optional[int] = None
-        self.tricamera = camera.TriFingerCameras(
-            pybullet_client_id=self.simfinger._pybullet_client_id
-        )
+        self.tricamera = self.make_camera()
 
         if initial_robot_position is None:
             initial_robot_position = self.initial_robot_position
