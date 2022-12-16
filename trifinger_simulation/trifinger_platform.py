@@ -149,6 +149,7 @@ class TriFingerPlatform:
         enable_shadows: bool = False,
         camera_view: str = "default",
         arena_color: str = "default",
+        fix_cube_base: bool = False,
     ):
         """Initialize.
 
@@ -230,6 +231,7 @@ class TriFingerPlatform:
                 position=initial_object_pose.position,
                 orientation=initial_object_pose.orientation,
                 pybullet_client_id=self.simfinger._pybullet_client_id,
+                fix_cube_base=fix_cube_base,
             )
             self._has_object_tracking = True
         elif object_type == ObjectType.DICE:
@@ -250,6 +252,7 @@ class TriFingerPlatform:
                 position=initial_object_pose.position,
                 orientation=initial_object_pose.orientation,
                 pybullet_client_id=self.simfinger._pybullet_client_id,
+                fix_cube_base=fix_cube_base,
             )
             self._has_object_tracking = True
 

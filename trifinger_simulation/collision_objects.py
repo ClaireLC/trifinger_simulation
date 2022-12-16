@@ -225,6 +225,7 @@ class ColoredCubeV2(BaseCollisionObject):
         position: _SeqFloat = (0, 0, 0),
         orientation: _SeqFloat = (0, 0, 0, 1),
         pybullet_client_id: int = 0,
+        fix_cube_base: bool = False,
     ):
         """
         Args:
@@ -242,6 +243,7 @@ class ColoredCubeV2(BaseCollisionObject):
             basePosition=position,
             baseOrientation=orientation,
             physicsClientId=pybullet_client_id,
+            useFixedBase=fix_cube_base,
         )
 
 class GreenCubeV2(BaseCollisionObject):
@@ -252,6 +254,7 @@ class GreenCubeV2(BaseCollisionObject):
         position: _SeqFloat = (0, 0, 0),
         orientation: _SeqFloat = (0, 0, 0, 1),
         pybullet_client_id: int = 0,
+        fix_cube_base: bool = False,
     ):
         """
         Args:
@@ -269,4 +272,5 @@ class GreenCubeV2(BaseCollisionObject):
             basePosition=position,
             baseOrientation=orientation,
             physicsClientId=pybullet_client_id,
+            useFixedBase=fix_cube_base,
         )
