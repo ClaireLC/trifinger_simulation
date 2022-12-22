@@ -226,12 +226,17 @@ class ColoredCubeV2(BaseCollisionObject):
         orientation: _SeqFloat = (0, 0, 0, 1),
         pybullet_client_id: int = 0,
         fix_cube_base: bool = False,
+        mass_factor: float = 1.0,
+        friction_factor: float = 1.0,
     ):
         """
         Args:
             position: Position at which the cube is spawned.
             orientation: Orientation with which the cube is spawned.
             pybullet_client_id:  Optional ID of the pybullet client.
+            fix_cube_base (bool): If True, fix cube base
+            mass_factor (float): Percent of default mass of cube
+            friction_factor (float): Set friction to this factor of default params
         """
         self._pybullet_client_id = pybullet_client_id
 
@@ -246,6 +251,27 @@ class ColoredCubeV2(BaseCollisionObject):
             useFixedBase=fix_cube_base,
         )
 
+        # Default friction params
+        self.lateral_friction_def = 1
+        self.spinning_friction_def = 0.001
+        self.default_mass = 0.094 # kg
+
+        # Set dynamics of the block
+        lateral_friction = self.lateral_friction_def * friction_factor
+        spinning_friction = self.spinning_friction_def * friction_factor
+        mass = self.default_mass * mass_factor
+
+        restitution = 0
+        pybullet.changeDynamics(
+            bodyUniqueId=self._object_id,
+            linkIndex=-1,
+            lateralFriction=lateral_friction,
+            spinningFriction=spinning_friction,
+            restitution=restitution,
+            mass=mass,
+            physicsClientId=self._pybullet_client_id,
+        )
+
 class GreenCubeV2(BaseCollisionObject):
     """Model of the green "Cube v2"."""
 
@@ -255,12 +281,17 @@ class GreenCubeV2(BaseCollisionObject):
         orientation: _SeqFloat = (0, 0, 0, 1),
         pybullet_client_id: int = 0,
         fix_cube_base: bool = False,
+        mass_factor: float = 0.094,
+        friction_factor: float = 1.0,
     ):
         """
         Args:
             position: Position at which the cube is spawned.
             orientation: Orientation with which the cube is spawned.
             pybullet_client_id:  Optional ID of the pybullet client.
+            fix_cube_base (bool): If True, fix cube base
+            mass_factor (float): Percent of default mass of cube
+            friction_factor (float): Set friction to this factor of default params
         """
         self._pybullet_client_id = pybullet_client_id
 
@@ -273,4 +304,25 @@ class GreenCubeV2(BaseCollisionObject):
             baseOrientation=orientation,
             physicsClientId=pybullet_client_id,
             useFixedBase=fix_cube_base,
+        )
+
+        # Default friction params
+        self.lateral_friction_def = 1
+        self.spinning_friction_def = 0.001
+        self.default_mass = 0.094 # kg
+
+        # Set dynamics of the block
+        lateral_friction = self.lateral_friction_def * friction_factor
+        spinning_friction = self.spinning_friction_def * friction_factor
+        mass = self.default_mass * mass_factor
+
+        restitution = 0
+        pybullet.changeDynamics(
+            bodyUniqueId=self._object_id,
+            linkIndex=-1,
+            lateralFriction=lateral_friction,
+            spinningFriction=spinning_friction,
+            restitution=restitution,
+            mass=mass,
+            physicsClientId=self._pybullet_client_id,
         )

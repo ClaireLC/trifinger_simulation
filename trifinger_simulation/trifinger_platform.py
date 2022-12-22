@@ -150,6 +150,8 @@ class TriFingerPlatform:
         camera_view: str = "default",
         arena_color: str = "default",
         fix_cube_base: bool = False,
+        cube_mass_factor: float = 1.0,
+        cube_friction_factor: float = 1.0,
     ):
         """Initialize.
 
@@ -177,6 +179,9 @@ class TriFingerPlatform:
                 object detection).
             enable_shadows:  Set to true to enable shadow rendering in
                 camera images.
+            fix_cube_base (bool): If True, fix cube base
+            cube_mass_factor (float): Percent of default mass of cube
+            cube_friction_factor (float): Set friction to this factor of default params
         """
         #: Camera rate in frames per second.  Observations of camera and
         #: object pose will only be updated with this rate.
@@ -232,6 +237,8 @@ class TriFingerPlatform:
                 orientation=initial_object_pose.orientation,
                 pybullet_client_id=self.simfinger._pybullet_client_id,
                 fix_cube_base=fix_cube_base,
+                mass_factor=cube_mass_factor,
+                friction_factor=cube_friction_factor,
             )
             self._has_object_tracking = True
         elif object_type == ObjectType.DICE:
@@ -253,6 +260,8 @@ class TriFingerPlatform:
                 orientation=initial_object_pose.orientation,
                 pybullet_client_id=self.simfinger._pybullet_client_id,
                 fix_cube_base=fix_cube_base,
+                mass_factor=cube_mass_factor,
+                friction_factor=cube_friction_factor,
             )
             self._has_object_tracking = True
 
