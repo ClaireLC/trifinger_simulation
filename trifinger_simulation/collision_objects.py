@@ -261,16 +261,17 @@ class ColoredCubeV2(BaseCollisionObject):
         spinning_friction = self.spinning_friction_def * friction_factor
         mass = self.default_mass * mass_factor
 
-        restitution = 0
-        pybullet.changeDynamics(
-            bodyUniqueId=self._object_id,
-            linkIndex=-1,
-            lateralFriction=lateral_friction,
-            spinningFriction=spinning_friction,
-            restitution=restitution,
-            mass=mass,
-            physicsClientId=self._pybullet_client_id,
-        )
+        if not fix_cube_base:
+            restitution = 0
+            pybullet.changeDynamics(
+                bodyUniqueId=self._object_id,
+                linkIndex=-1,
+                lateralFriction=lateral_friction,
+                spinningFriction=spinning_friction,
+                restitution=restitution,
+                mass=mass,
+                physicsClientId=self._pybullet_client_id,
+            )
 
 class GreenCubeV2(BaseCollisionObject):
     """Model of the green "Cube v2"."""
@@ -316,13 +317,14 @@ class GreenCubeV2(BaseCollisionObject):
         spinning_friction = self.spinning_friction_def * friction_factor
         mass = self.default_mass * mass_factor
 
-        restitution = 0
-        pybullet.changeDynamics(
-            bodyUniqueId=self._object_id,
-            linkIndex=-1,
-            lateralFriction=lateral_friction,
-            spinningFriction=spinning_friction,
-            restitution=restitution,
-            mass=mass,
-            physicsClientId=self._pybullet_client_id,
-        )
+        if not fix_cube_base:
+            restitution = 0
+            pybullet.changeDynamics(
+                bodyUniqueId=self._object_id,
+                linkIndex=-1,
+                lateralFriction=lateral_friction,
+                spinningFriction=spinning_friction,
+                restitution=restitution,
+                mass=mass,
+                physicsClientId=self._pybullet_client_id,
+            )
