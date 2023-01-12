@@ -19,6 +19,7 @@ class ObjectType(enum.Enum):
     COLORED_CUBE = 1
     DICE = 2
     GREEN_CUBE = 3
+    PURPLE_CUBE = 4
 
 
 class ObjectPose:
@@ -256,6 +257,17 @@ class TriFingerPlatform:
             ]
         elif object_type == ObjectType.GREEN_CUBE:
             self.cube = collision_objects.GreenCubeV2(
+                position=initial_object_pose.position,
+                orientation=initial_object_pose.orientation,
+                pybullet_client_id=self.simfinger._pybullet_client_id,
+                fix_cube_base=fix_cube_base,
+                mass_factor=cube_mass_factor,
+                friction_factor=cube_friction_factor,
+            )
+            self._has_object_tracking = True
+
+        elif object_type == ObjectType.PURPLE_CUBE:
+            self.cube = collision_objects.PurpleCubeV2(
                 position=initial_object_pose.position,
                 orientation=initial_object_pose.orientation,
                 pybullet_client_id=self.simfinger._pybullet_client_id,
