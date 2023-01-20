@@ -135,7 +135,7 @@ def seed(seed: int):
     random = np.random.RandomState(seed)
 
 
-def sample_goal(difficulty):
+def sample_goal(difficulty, up_face_id=None):
     """Sample a goal pose for the cube.
 
     Args:
@@ -197,7 +197,7 @@ def sample_goal(difficulty):
         # on the ground, random yaw
         x, y = random_xy(sample_radius=0.09)
         z = _CUBE_WIDTH / 2
-        orientation = random_yaw_orientation()
+        orientation = random_yaw_orientation(up_face=up_face_id)
 
     elif difficulty == -2: # for initialization with the cube far from the center
         # on the ground, random yaw
